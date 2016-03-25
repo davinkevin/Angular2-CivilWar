@@ -8,7 +8,7 @@ import {Challenger} from "../common/entity/challenger";
 @Component({
     selector : 'battle',
     template : `
-            <div *ngIf="!isKo(cachallenger) && !isKo(imchallenger)" class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+            <div *ngIf="!isKo(cachallenger) && !isKo(imchallenger)" class="versus col-lg-6 col-sm-6 col-md-6 col-xs-6">
                   <div class="col-sm-6 col-md-6">
                     <div class="thumbnail">
                       <img [src]="cachallenger.thumbnail">
@@ -28,11 +28,13 @@ import {Challenger} from "../common/entity/challenger";
                     </div>
                   </div>
             </div>
-            <div *ngIf="isKo(cachallenger)" class="text-center">
+            <div *ngIf="isKo(cachallenger)" class="text-center col-lg-6 col-sm-6 col-md-6 col-xs-6">
                 <h3>Iron Man Team wins !</h3>
+                <img src="img/ironmanteam.jpg" height="300">
             </div>
-            <div *ngIf="isKo(imchallenger) && cachallenger !== null" class="text-center">
+            <div *ngIf="isKo(imchallenger)" class="text-center col-lg-6 col-sm-6 col-md-6 col-xs-6">
                 <h3>Captain America Team wins !</h3>
+                <img src="img/captainamericateam.jpg" height="300">
             </div>
         `
 })
