@@ -18,13 +18,13 @@ import {Battle} from "./battle/battle";
             </div>
           </div>
         </nav>
-        <challengers-list #CATeam [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" (select)="battle.select()"></challengers-list>
-        <challengers-list #IMTeam [challengers]="ironManTeam" [teamName]="'Iron Man Team'" (select)="battle.select()"></challengers-list>
+        <challengers-list #CATeam [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" ></challengers-list>
+        <challengers-list #IMTeam [challengers]="ironManTeam" [teamName]="'Iron Man Team'"></challengers-list>
         <battle 
-            [CaptainAmericaChallenger]="CATeam.getFirstChallengerAvailable()" 
-            [IronManChallenger]="IMTeam.getFirstChallengerAvailable()"
+            [CaptainAmericaChallenger]="CATeam.getChallenger()" 
+            [IronManChallenger]="IMTeam.getChallenger()"
             (winner)="CATeam.updateStatus($event); IMTeam.updateStatus($event)"
-            ></battle>
+        ></battle>
     `,
     directives : [ ChallengersList, Battle]
 })
@@ -35,12 +35,18 @@ export class AppComponent {
     
     constructor() {
         this.captainAmericaTeam.push(
-            { name : 'Captain America', thumbnail : 'http://foo/bar.png', status : 'OK'},
-            { name : 'Hawk Eye', thumbnail : 'http://foo/bar.png', status : 'OK'}
+            { name : 'Hawkeye', thumbnail : 'img/characters/Hawkeye.jpg', status : 'OK'},
+            { name : 'Sharon Carter', thumbnail : 'img/characters/SharonCarter.jpg', status : 'OK'},
+            { name : 'Falcon', thumbnail : 'img/characters/Falcon.jpg', status : 'OK'},
+            { name : 'Bucky Barnes', thumbnail : 'img/characters/BuckyBarnes.jpg', status : 'OK'},
+            { name : 'Captain America', thumbnail : 'img/characters/CaptainAmerica.jpg', status : 'OK'}
         );
         this.ironManTeam.push(
-            { name : 'Iron Man', thumbnail : 'http://foo/bar.png', status : 'OK'},
-            { name : 'Thor', thumbnail : 'http://foo/bar.png', status : 'OK'}
+            { name : 'Black Widow', thumbnail : 'img/characters/BlackWidow.jpg', status : 'OK'},
+            { name : 'Black Panther', thumbnail : 'img/characters/BlackPanther.jpg', status : 'OK'},
+            { name : 'War Machine', thumbnail : 'img/characters/WarMachine.jpg', status : 'OK'},
+            { name : 'The Vision', thumbnail : 'img/characters/TheVision.jpg', status : 'OK'},
+            { name : 'Iron Man', thumbnail : 'img/characters/IronMan.jpg', status : 'OK'}
         );
     }
 }

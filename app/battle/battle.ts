@@ -8,20 +8,30 @@ import {Challenger} from "../common/entity/challenger";
 @Component({
     selector : 'battle',
     template : `
-            <div *ngIf="cachallenger !== null && imchallenger != null" class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                <div class="col-md-6">
-                    {{ cachallenger.name }}
-                    <button (click)="win(cachallenger)">Win !</button>
-                </div>
-                <div class="col-md-6">
-                    {{ imchallenger.name }}
-                    <button (click)="win(imchallenger)">Win !</button>
-                </div>
+            <div *ngIf="!isKo(cachallenger) && !isKo(imchallenger)" class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                  <div class="col-sm-6 col-md-6">
+                    <div class="thumbnail">
+                      <img [src]="cachallenger.thumbnail">
+                      <div class="caption text-center">
+                        <h3>{{ cachallenger.name }}</h3>
+                        <button class="btn btn-success" (click)="win(cachallenger)">Win !</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                    <div class="thumbnail">
+                      <img [src]="imchallenger.thumbnail">
+                      <div class="caption text-center">
+                        <h3>{{ imchallenger.name }}</h3>
+                        <button class="btn btn-success" (click)="win(imchallenger)">Win !</button>
+                      </div>
+                    </div>
+                  </div>
             </div>
-            <div *ngIf="cachallenger === null && imchallenger !== null">
+            <div *ngIf="isKo(cachallenger)" class="text-center">
                 <h3>Iron Man Team wins !</h3>
             </div>
-            <div *ngIf="imchallenger === null && cachallenger !== null">
+            <div *ngIf="isKo(imchallenger) && cachallenger !== null" class="text-center">
                 <h3>Captain America Team wins !</h3>
             </div>
         `
@@ -35,4 +45,7 @@ export class Battle {
         this.winnerEmitter.emit(challenger);
     }
 
+    isKo(challenger : Challenger) {
+        return challenger.status === 'KO';
+    }
 }
