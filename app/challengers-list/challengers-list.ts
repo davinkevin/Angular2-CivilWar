@@ -8,20 +8,17 @@ import {Challenger} from "../common/entity/challenger";
 @Component({
     selector : 'challengers-list',
     template : `
-        <div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">
+        <div>
             <h3>{{ teamName }}</h3>
-            <ul class="list-group">
-              <li   (click)="setKo(challenger)" 
-                    class="list-group-item" 
-                    *ngFor="#challenger of challengers; #i = index" 
-                    [class.list-group-item-danger]="challenger.status === 'KO'"
-                    [class.list-group-item-warning]="i === 0"
-                    >
-                <span class="badge">{{ challenger.status }}</span>
-                {{ challenger.name }}
-              </li>
-            </ul>        
-        </div>
+            <div role="listbox">
+              <paper-item  *ngFor="#challenger of challengers; #i = index" 
+                    [class.ko]="challenger.status === 'KO'"
+                    [class.current]="i === 0">
+                    <iron-icon [icon]="challenger.status === 'OK' ? 'social:person' : 'close'" item-icon></iron-icon>
+                    {{ challenger.name }}
+                </paper-item>
+            </div>
+           </div>
     `
 })
 export class ChallengersList {
@@ -34,9 +31,11 @@ export class ChallengersList {
     
     updateStatus(winner : Challenger) {
         let currentChallenger = this.getChallenger();
+
         if ( currentChallenger === winner) {
             return;
         }
+
         currentChallenger.status = 'KO';
         this.sortChallengers();
     }
@@ -44,5 +43,4 @@ export class ChallengersList {
     private sortChallengers() {
         this.challengers.sort((c1, c2) => c1.status === c2.status ? 0 : c1.status === 'OK' ? -1 : 1 )
     }
-
 }

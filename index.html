@@ -4,16 +4,75 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <style>
-        challengers-list:nth-of-type(2) > div{
-            float: right;
+    <link rel="import" href="node_modules/@polymer/paper-card/paper-card.html">
+    <link rel="import" href="node_modules/@polymer/paper-styles/paper-styles.html">
+    <link rel="import" href="node_modules/@polymer/paper-button/paper-button.html">
+    <link rel="import" href="node_modules/@polymer/paper-toolbar/paper-toolbar.html">
+    <link rel="import" href="node_modules/@polymer/paper-item/paper-item.html">
+    <link rel="import" href="node_modules/@polymer/paper-item/paper-item-body.html">
+    <link rel="import" href="node_modules/@polymer/paper-item/paper-icon-item.html">
+    <link rel="import" href="node_modules/@polymer/iron-icon/iron-icon.html">
+    <link rel="import" href="node_modules/@polymer/iron-icons/iron-icons.html">
+    <link rel="import" href="node_modules/@polymer/iron-icons/social-icons.html">
+
+
+    <style is="custom-style">
+        body {
+            margin : 0;
+        }
+        my-app > div {
+            margin: 16px;
+        }
+        challengers-list:nth-of-type(2) {
+            order: 3;
+        }
+        div[role=listbox] {
+            border: 1px solid #e5e5e5;
         }
 
-        .versus img {
-            width: 400px;
+        battle paper-card {
+            --paper-card-header-text : {
+                color : white;
+            };
+            --paper-card-header-image : {
+                width: 300px;
+            }
         }
+
+        battle paper-card.victory {
+            --paper-card-header-text : {
+                color : white;
+            };
+            --paper-card-header-image : {
+                width: 500px;
+            }
+        }
+
+        battle iron-image {
+            --iron-image-height : 300px;
+        }
+
+        battle paper-card > div.card-actions {
+            @apply(--layout-vertical);
+            @apply(--layout-center-center);
+        }
+
+        battle paper-button.green {
+            background-color: var(--paper-green-500);
+            color: white;
+        }
+
+        paper-item.current {
+            background: var(--paper-indigo-100);
+        }
+
+        paper-item.ko {
+            background: var(--paper-blue-grey-500);
+            color: white;
+        }
+
     </style>
+
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
@@ -43,6 +102,9 @@
 
 <!-- 3. Display the application -->
 <body>
+    <paper-toolbar>
+        <span class="title">Angular2 - Civil War</span>
+    </paper-toolbar>
     <my-app>Loading...</my-app>
 </body>
 </html>

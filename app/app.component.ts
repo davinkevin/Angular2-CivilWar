@@ -9,22 +9,15 @@ import {Battle} from "./battle/battle";
 @Component({
     selector: 'my-app',
     template: `
-        <nav class="navbar navbar-default navbar-inverse">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">
-                Angular2 - Civil War
-              </a>
-            </div>
-          </div>
-        </nav>
-        <challengers-list #CATeam [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" ></challengers-list>
-        <challengers-list #IMTeam [challengers]="ironManTeam" [teamName]="'Iron Man Team'"></challengers-list>
-        <battle 
-            [CaptainAmericaChallenger]="CATeam.getChallenger()" 
-            [IronManChallenger]="IMTeam.getChallenger()"
-            (winner)="CATeam.updateStatus($event); IMTeam.updateStatus($event)"
-        ></battle>
+        <div class="horizontal layout">
+            <challengers-list #CATeam [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" class="flex-3"></challengers-list>
+            <challengers-list #IMTeam [challengers]="ironManTeam" [teamName]="'Iron Man Team'" class="flex-3"></challengers-list>
+            <battle class="flex-6"
+                [CaptainAmericaChallenger]="CATeam.getChallenger()" 
+                [IronManChallenger]="IMTeam.getChallenger()"
+                (winner)="CATeam.updateStatus($event); IMTeam.updateStatus($event)"
+            ></battle>
+        </div>
     `,
     directives : [ ChallengersList, Battle]
 })
