@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/webcomponents.js/webcomponents.js"></script>
+    <link rel="import" href="node_modules/@polymer/paper-toolbar/paper-toolbar.html">
+    <link rel="import" href="node_modules/@polymer/paper-card/paper-card.html">
+    <link rel="import" href="node_modules/@polymer/paper-styles/paper-styles.html">
+    <link rel="import" href="node_modules/@polymer/paper-button/paper-button.html">
+    <link rel="import" href="node_modules/@polymer/paper-item/paper-item.html">
+    <link rel="import" href="node_modules/@polymer/paper-item/paper-item-body.html">
+    <link rel="import" href="node_modules/@polymer/paper-item/paper-icon-item.html">
+    <link rel="import" href="node_modules/@polymer/iron-icon/iron-icon.html">
+    <link rel="import" href="node_modules/@polymer/iron-icons/iron-icons.html">
+</head>
+<body>
+
+<br>
+<style is="custom-style">
+    paper-card {
+        --paper-card-header-text : {
+            color : white;
+        };
+        --paper-card-header-image : {
+            width: 300px;
+        }
+    }
+
+    paper-card > div.card-actions {
+        @apply(--layout-vertical);
+        @apply(--layout-center-center);
+    }
+
+    paper-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+    }
+
+    .avatar {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #ffc107;
+    }
+</style>
+
+<div role="listbox">
+    <paper-icon-item>
+        <iron-icon icon="inbox" item-icon></iron-icon>
+        Inbox
+    </paper-icon-item>
+    <paper-icon-item>
+        <iron-icon icon="star" item-icon></iron-icon>
+        Starred
+    </paper-icon-item>
+    <paper-icon-item>
+        <div class="avatar blue" item-icon></div>
+        Alphonso Engelking
+    </paper-icon-item>
+    <paper-icon-item>
+        <div class="avatar" item-icon></div>
+        Angela Decker
+    </paper-icon-item>
+</div>
+
+<paper-card heading="Hawk Eye" image="img/characters/Hawkeye.jpg">
+    <div class="card-actions">
+        <paper-button class="green">Win !</paper-button>
+    </div>
+</paper-card>
+
+</body>
+</html>

@@ -11,7 +11,7 @@ import {Challenger} from "../common/entity/challenger";
         <div>
             <h3>{{ teamName }}</h3>
             <div role="listbox">
-              <paper-item  *ngFor="#challenger of challengers; #i = index" 
+              <paper-item  *ngFor="let challenger of challengers; let i = index" 
                     [class.ko]="challenger.status === 'KO'"
                     [class.current]="i === 0">
                     <iron-icon [icon]="challenger.status === 'OK' ? 'social:person' : 'close'" item-icon></iron-icon>
