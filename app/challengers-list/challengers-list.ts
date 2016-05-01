@@ -6,6 +6,9 @@ import {Challenger} from "../common/entity/challenger";
     template : `
         <div>
             <h3>{{ teamName }}</h3>
+            <ul>
+              <li *ngFor="let challenger of challengers;"> {{ challenger.name }}</li>
+            </ul>
         </div>
     `
 })
