@@ -15,7 +15,6 @@
     <link rel="import" href="node_modules/@polymer/iron-icons/iron-icons.html">
     <link rel="import" href="node_modules/@polymer/iron-icons/social-icons.html">
 
-
     <style is="custom-style">
         body {
             margin : 0;
@@ -89,14 +88,10 @@
     <script>
         System.config({
             packages: {
-                dist : {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
+                dist : { format: 'register', defaultExtension: 'js' }
             }
         });
-        System.import('dist/main')
-                .then(null, console.error.bind(console));
+        System.import('dist/main').then(null, console.error.bind(console));
     </script>
 </head>
 
@@ -105,6 +100,6 @@
     <paper-toolbar>
         <span class="title">Angular2 - Civil War</span>
     </paper-toolbar>
-    <my-app>Loading...</my-app>
+    <civil-war-app>Loading...</civil-war-app>
 </body>
 </html>

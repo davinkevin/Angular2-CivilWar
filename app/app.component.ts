@@ -7,7 +7,7 @@ import {Challenger} from "./common/entity/challenger";
 import {Battle} from "./battle/battle";
 
 @Component({
-    selector: 'my-app',
+    selector: 'civil-war-app',
     template: `
         <div class="horizontal layout">
             <challengers-list #CATeam [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" class="flex-3"></challengers-list>
@@ -21,7 +21,7 @@ import {Battle} from "./battle/battle";
     `,
     directives : [ ChallengersList, Battle]
 })
-export class AppComponent {
+export class CivilWarApp {
     
     captainAmericaTeam : Array<Challenger> = [];
     ironManTeam : Array<Challenger> = [];
