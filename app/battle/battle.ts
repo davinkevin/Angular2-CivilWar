@@ -8,7 +8,7 @@ import {Challenger} from "../common/entity/challenger";
 @Component({
     selector : 'battle',
     template : `
-            <div class="horizontal around-justified layout">
+            <div *ngIf="!isKo(cachallenger) && !isKo(imchallenger)" class="horizontal around-justified layout">
               <paper-card [heading]="cachallenger.name" [image]="cachallenger.thumbnail" >
                 <div class="card-actions">
                     <paper-button raised class="green" (click)="win(cachallenger)">Win !</paper-button>
@@ -19,6 +19,10 @@ import {Challenger} from "../common/entity/challenger";
                     <paper-button raised class="green" (click)="win(imchallenger)">Win !</paper-button>
                 </div>
               </paper-card>
+            </div>
+            <div class="horizontal around-justified layout">
+                <paper-card class="victory" *ngIf="isKo(cachallenger)" heading="Iron Man Team wins !" image="img/ironmanteam.jpg"></paper-card>
+                <paper-card class="victory" *ngIf="isKo(imchallenger)" heading="Captain America Team wins !" image="img/captainamericateam.jpg"></paper-card>            
             </div>
         `
 })
