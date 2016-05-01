@@ -2,24 +2,30 @@
  * Created by kevin on 12/03/2016.
  */
 import {Component} from "angular2/core";
-import {Challenger} from "./common/entity/challenger";
 import {ChallengersList} from "./challengers-list/challengers-list";
+import {Challenger} from "./common/entity/challenger";
+import {Battle} from "./battle/battle";
 
 @Component({
     selector: 'civil-war-app',
     template: `
         <div class="horizontal layout">
-            <challengers-list [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" class="flex-3"></challengers-list>
-            <challengers-list [challengers]="ironManTeam" [teamName]="'Iron Man Team'" class="flex-3"></challengers-list>
+            <challengers-list #CATeam [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" class="flex-3"></challengers-list>
+            <challengers-list #IMTeam [challengers]="ironManTeam" [teamName]="'Iron Man Team'" class="flex-3"></challengers-list>
+            <battle class="flex-6"
+                [CaptainAmericaChallenger]="CATeam.getChallenger()" 
+                [IronManChallenger]="IMTeam.getChallenger()"
+                (winner)="CATeam.updateStatus($event); IMTeam.updateStatus($event)"
+            ></battle>
         </div>
     `,
-    directives : [ ChallengersList ]
+    directives : [ ChallengersList, Battle]
 })
 export class CivilWarApp {
-    
+
     captainAmericaTeam : Array<Challenger> = [];
     ironManTeam : Array<Challenger> = [];
-    
+
     constructor() {
         this.captainAmericaTeam.push(
             { name : 'Hawkeye', thumbnail : 'img/characters/Hawkeye.jpg', status : 'OK'},
@@ -37,4 +43,3 @@ export class CivilWarApp {
         );
     }
 }
-
