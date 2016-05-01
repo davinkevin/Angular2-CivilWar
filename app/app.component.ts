@@ -2,24 +2,16 @@
  * Created by kevin on 12/03/2016.
  */
 import {Component} from "angular2/core";
-import {ChallengersList} from "./challengers-list/challengers-list";
 import {Challenger} from "./common/entity/challenger";
-import {Battle} from "./battle/battle";
 
 @Component({
     selector: 'civil-war-app',
     template: `
         <div class="horizontal layout">
-            <challengers-list #CATeam [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" class="flex-3"></challengers-list>
-            <challengers-list #IMTeam [challengers]="ironManTeam" [teamName]="'Iron Man Team'" class="flex-3"></challengers-list>
-            <battle class="flex-6"
-                [CaptainAmericaChallenger]="CATeam.getChallenger()" 
-                [IronManChallenger]="IMTeam.getChallenger()"
-                (winner)="CATeam.updateStatus($event); IMTeam.updateStatus($event)"
-            ></battle>
+            Hello Toulouse !!
         </div>
     `,
-    directives : [ ChallengersList, Battle]
+    directives : [ ]
 })
 export class CivilWarApp {
     
