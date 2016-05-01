@@ -3,15 +3,17 @@
  */
 import {Component} from "angular2/core";
 import {Challenger} from "./common/entity/challenger";
+import {ChallengersList} from "./challengers-list/challengers-list";
 
 @Component({
     selector: 'civil-war-app',
     template: `
         <div class="horizontal layout">
-            Hello Toulouse !!
+            <challengers-list [challengers]="captainAmericaTeam" [teamName]="'Captain America Team'" class="flex-3"></challengers-list>
+            <challengers-list [challengers]="ironManTeam" [teamName]="'Iron Man Team'" class="flex-3"></challengers-list>
         </div>
     `,
-    directives : [ ]
+    directives : [ ChallengersList ]
 })
 export class CivilWarApp {
     
